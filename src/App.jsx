@@ -131,6 +131,9 @@ const App = () => {
                 text.style.display = 'flex';
                 text.style.alignItems = 'center';
                 text.style.justifyContent = 'center';
+                text.style.paddingTop = '0';
+                text.style.paddingBottom = '0';
+                text.style.height = '100%';
                 text.style.transform = 'none';
             });
         }
@@ -162,8 +165,8 @@ const App = () => {
   const btnDownloadClass = "bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2 px-4 rounded-full shadow-md transition flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed";
   const headerPillClass = "header-pill h-8 bg-emerald-900/95 px-5 rounded-full text-white text-[0.63rem] font-bold uppercase tracking-[0.1em] shadow-lg border border-emerald-400/50 flex items-center justify-center gap-2 leading-none";
   const cardFooterClass = "h-[12%] shrink-0 bg-emerald-900 flex items-center justify-between px-6 z-10 border-t-2 border-yellow-400";
-  const cardFooterRgClass = "card-footer-rg text-white font-mono text-xs tracking-widest flex items-center gap-2 font-bold leading-none";
-  const cardFooterValidityClass = "card-footer-validity text-emerald-400/80 text-[0.5rem] uppercase tracking-wide font-bold leading-none flex items-center";
+  const cardFooterRgClass = "card-footer-rg text-white font-mono text-xs tracking-widest flex items-center h-full gap-2 font-bold leading-none";
+  const cardFooterValidityClass = "card-footer-validity text-emerald-400/80 text-[0.5rem] uppercase tracking-wide font-bold leading-none flex items-center h-full";
   
   const cardLabelClass = "data-label block font-bold text-emerald-700 text-[0.45rem] mb-[1px] leading-none uppercase tracking-wide";
   const cardValueClass = "data-value font-bold block whitespace-nowrap text-[0.6rem] leading-none text-gray-800 uppercase";
@@ -486,15 +489,14 @@ const App = () => {
                 </div>
               </div>
 
-              <div className="flex-1 p-4 relative flex flex-col justify-between overflow-hidden">
-                
+              <div className="flex-1 p-4 relative flex flex-col overflow-hidden min-h-0">
                 {/* Lista de Vacinas Ajustada */}
                 <div className="flex-1 flex flex-col overflow-hidden min-h-0">
                   <h4 className="flex items-center gap-2 text-[0.6rem] font-bold text-emerald-800 uppercase mb-2 border-b-2 border-emerald-200 pb-1 shrink-0 tracking-wide">
                     <Syringe size={10} className="text-emerald-600" />
                     Registro de Imunização ({vacinas.length})
                   </h4>
-                  
+
                   <div className="overflow-y-auto pr-1">
                     <div className="grid grid-cols-2 gap-x-3 gap-y-2">
                       {vacinas.slice(0, 8).map((vacina, i) => (
@@ -516,17 +518,16 @@ const App = () => {
                     Documento válido para controle de vacinação, identificação e recebimento oficial de cafunés.
                   </p>
                 </div>
+              </div>
 
-                <div className={cardFooterClass}>
-                    <div className={cardFooterRgClass}>
-                      <span className="text-emerald-300">RG:</span>
-                      {formData.rg || "CATLUNA001"}
-                    </div>
-                    <div className={cardFooterValidityClass}>
-                      Válido em todo território felino
-                    </div>
-                </div>
-
+              <div className={cardFooterClass}>
+                  <div className={cardFooterRgClass}>
+                    <span className="text-emerald-300">RG:</span>
+                    {formData.rg || "CATLUNA001"}
+                  </div>
+                  <div className={cardFooterValidityClass}>
+                    Válido em todo território felino
+                  </div>
               </div>
             </div>
           </div>
