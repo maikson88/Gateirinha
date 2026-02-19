@@ -94,13 +94,96 @@ const App = () => {
             // Ajuste específico para o título (Nome do Gato)
             const titleEl = clonedDoc.querySelector('.cat-name-title');
             if(titleEl) {
-               titleEl.style.lineHeight = '1';
-               titleEl.style.marginBottom = '5px';
+               titleEl.style.lineHeight = '1.16';
+               titleEl.style.marginBottom = '6px';
+               titleEl.style.paddingBottom = '6px';
+               titleEl.style.overflow = 'visible';
             }
             
             const fontElements = clonedDoc.querySelectorAll('.font-oswald, .font-condensed');
             fontElements.forEach(el => {
                 el.style.fontVariant = 'normal';
+            });
+
+            const stripedHeaders = clonedDoc.querySelectorAll('.card-stripe-header');
+            stripedHeaders.forEach((header) => {
+                header.style.backgroundColor = '#047857';
+                header.style.backgroundImage = 'radial-gradient(circle at 15% 20%, rgba(255,255,255,0.16), transparent 38%), radial-gradient(circle at 80% 18%, rgba(255,255,255,0.12), transparent 35%), linear-gradient(120deg, #065f46 0%, #047857 52%, #0f766e 100%)';
+                header.style.backgroundSize = 'auto, auto, 100% 100%';
+                header.style.backgroundRepeat = 'no-repeat';
+                header.style.backgroundPosition = 'left top, right top, center';
+            });
+
+            const headerPills = clonedDoc.querySelectorAll('.header-pill');
+            headerPills.forEach((pill) => {
+                pill.style.display = 'flex';
+                pill.style.alignItems = 'center';
+                pill.style.justifyContent = 'center';
+                pill.style.lineHeight = '1';
+                pill.style.paddingTop = '0';
+                pill.style.paddingBottom = '0';
+                pill.style.minHeight = '32px';
+                pill.style.transform = 'none';
+
+                const pillChildren = pill.querySelectorAll('*');
+                pillChildren.forEach((child) => {
+                    child.style.display = 'inline-flex';
+                    child.style.alignItems = 'center';
+                    child.style.lineHeight = '1';
+                    child.style.marginTop = '0';
+                    child.style.marginBottom = '0';
+                    child.style.transform = 'none';
+                });
+            });
+
+            const headerCenteredTexts = clonedDoc.querySelectorAll('.header-pill-text');
+            headerCenteredTexts.forEach((node) => {
+                node.style.display = 'inline-flex';
+                node.style.alignItems = 'center';
+                node.style.justifyContent = 'center';
+                node.style.height = '100%';
+                node.style.lineHeight = '1';
+                node.style.marginTop = '0';
+                node.style.marginBottom = '0';
+                node.style.transform = 'translateY(-5px)';
+            });
+
+            const footerCenteredTexts = clonedDoc.querySelectorAll('.card-footer-text');
+            footerCenteredTexts.forEach((node) => {
+                node.style.display = 'inline-flex';
+                node.style.alignItems = 'center';
+                node.style.justifyContent = 'center';
+                node.style.height = '100%';
+                node.style.lineHeight = '1';
+                node.style.marginTop = '0';
+                node.style.marginBottom = '0';
+                node.style.position = 'relative';
+                node.style.top = '-5px';
+                node.style.transform = 'none';
+            });
+
+            const footerTexts = clonedDoc.querySelectorAll('.card-footer-rg, .card-footer-validity');
+            footerTexts.forEach((text) => {
+                text.style.lineHeight = '1';
+                text.style.display = 'flex';
+                text.style.alignItems = 'center';
+                text.style.justifyContent = 'center';
+                text.style.paddingTop = '0';
+                text.style.paddingBottom = '0';
+                text.style.marginTop = '0';
+                text.style.marginBottom = '0';
+                text.style.height = '100%';
+                text.style.transform = 'none';
+
+                const footerChildren = text.querySelectorAll('*');
+                footerChildren.forEach((child) => {
+                    child.style.display = 'inline-flex';
+                    child.style.alignItems = 'center';
+                    child.style.lineHeight = '1';
+                    child.style.marginTop = '0';
+                    child.style.marginBottom = '0';
+                    child.style.transform = 'none';
+                });
             });
         }
       });
@@ -116,22 +199,23 @@ const App = () => {
   };
 
   const pawPattern = `data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2310b981' fill-opacity='0.08' fill-rule='evenodd' transform='rotate(-45, 30, 30)'%3E%3Cpath d='M10,10 C12,10 13,12 13,14 C13,16 12,18 10,18 C8,18 7,16 7,14 C7,12 8,10 10,10 Z M20,6 C22,6 23,8 23,10 C23,12 22,14 20,14 C18,14 17,12 17,10 C17,8 18,6 20,6 Z M30,10 C32,10 33,12 33,14 C33,16 32,18 30,18 C28,18 27,16 27,14 C27,12 28,10 30,10 Z M20,20 C24,20 26,23 26,26 C26,29 24,32 20,32 C16,32 14,29 14,26 C14,23 16,20 20,20 Z' transform='translate(10, 10)'/%3E%3C/g%3E%3C/svg%3E`;
-
-  // Estilo do Header Listrado (CSS Puro para melhor renderização)
+  // Header com gradientes suaves para evitar artefatos no preview e no PNG
   const headerStripeStyle = {
-    background: `repeating-linear-gradient(
-      135deg,
-      #047857,
-      #047857 10px,
-      #065f46 10px,
-      #065f46 20px
-    )`,
-    borderBottom: '2px solid #fbbf24' // Borda dourada para acabamento
+    backgroundColor: '#047857',
+    backgroundImage: 'radial-gradient(circle at 15% 20%, rgba(255,255,255,0.16), transparent 38%), radial-gradient(circle at 80% 18%, rgba(255,255,255,0.12), transparent 35%), linear-gradient(120deg, #065f46 0%, #047857 52%, #0f766e 100%)',
+    backgroundSize: 'auto, auto, 100% 100%',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'left top, right top, center',
+    borderBottom: '2px solid #fbbf24'
   };
 
   const inputFieldClass = "w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition text-sm";
   const labelTextClass = "block text-xs font-bold text-gray-500 uppercase mb-1";
   const btnDownloadClass = "bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2 px-4 rounded-full shadow-md transition flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed";
+  const headerPillClass = "header-pill h-8 bg-emerald-900/95 px-5 rounded-full text-white text-[0.63rem] font-bold uppercase tracking-[0.1em] shadow-lg border border-emerald-400/50 flex items-center justify-center gap-2 leading-none";
+  const cardFooterClass = "h-[12%] shrink-0 bg-emerald-900 flex items-center justify-between px-6 z-10 border-t-2 border-yellow-400";
+  const cardFooterRgClass = "card-footer-rg text-white font-mono text-xs tracking-widest flex items-center h-full gap-2 font-bold leading-none";
+  const cardFooterValidityClass = "card-footer-validity text-emerald-400/80 text-[0.5rem] uppercase tracking-wide font-bold leading-none flex items-center h-full";
   
   const cardLabelClass = "data-label block font-bold text-emerald-700 text-[0.45rem] mb-[1px] leading-none uppercase tracking-wide";
   const cardValueClass = "data-value font-bold block whitespace-nowrap text-[0.6rem] leading-none text-gray-800 uppercase";
@@ -302,22 +386,23 @@ const App = () => {
             
             <div 
               ref={frontCardRef} 
-              className="aspect-[1.586/1] w-full bg-white rounded-xl shadow-2xl overflow-hidden relative border border-gray-200 select-none text-[#0f3d30] flex flex-col"
-              style={{ backgroundImage: `url("${pawPattern}")`, backgroundColor: '#fff' }}
+              className="aspect-[1.586/1] w-full bg-emerald-50 rounded-xl shadow-2xl overflow-hidden relative border border-gray-200 select-none text-[#0f3d30] flex flex-col"
+              style={{ backgroundImage: `url("${pawPattern}")`, backgroundColor: '#f0fdf4' }}
             >
               {/* Header Listrado Corrigido */}
               <div 
-                className="h-[18%] shrink-0 w-full flex items-center justify-center relative z-10"
+                className="card-stripe-header h-[18%] shrink-0 w-full flex items-center justify-center relative z-10"
                 style={headerStripeStyle}
               >
                  {/* Container do Texto Centralizado Verticalmente */}
                  <div className="flex items-center justify-center h-full w-full">
-                   <div className="bg-emerald-900/95 px-5 py-1.5 rounded-full text-white text-[0.65rem] font-bold uppercase tracking-[0.15em] shadow-lg border border-emerald-400/50 flex items-center gap-3">
-                      <span className="font-condensed flex items-center gap-1">
-                        <span className="text-yellow-400 text-xs">★</span> República Federativa dos Gatos
+                   <div className={headerPillClass}>
+                      <span className="font-condensed inline-flex items-center gap-1 leading-none">
+                        <span className="header-pill-text text-yellow-400 text-[0.8rem] leading-none">★</span>
+                        <span className="header-pill-text leading-none">República Federativa dos Gatos</span>
                       </span>
                       <span className="h-3 w-[1px] bg-emerald-500/50"></span>
-                      <span className="font-condensed text-emerald-200">Registro Gatuno</span>
+                      <span className="header-pill-text font-condensed text-emerald-200 leading-none">Registro Gatuno</span>
                    </div>
                  </div>
               </div>
@@ -326,19 +411,19 @@ const App = () => {
               <div className="flex-1 flex flex-col relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-b from-black/5 to-transparent z-0"></div>
 
-                <div className="flex-1 flex items-center justify-center px-6 relative z-10">
-                  <div className="w-full flex gap-4 items-center justify-center">
+                <div className="flex-1 flex items-center justify-center px-6 py-2 relative z-10">
+                  <div className="w-full flex gap-5 items-center justify-center">
                     
                     {/* Coluna Esquerda: Foto + Assinatura */}
-                    <div className="flex flex-col items-center gap-2 shrink-0 w-[32%]">
+                    <div className="flex flex-col items-center gap-3 shrink-0 w-[24%]">
                       {/* Foto Box */}
-                      <div className="w-full aspect-[3/4] bg-white border-[3px] border-emerald-800 rounded-md p-0.5 shadow-sm relative group">
-                         <div className="w-full h-full bg-gray-100 overflow-hidden relative flex items-center justify-center">
+                      <div className="w-full aspect-[3/4] bg-white border-2 border-emerald-800 rounded-lg p-1 shadow-md relative group">
+                         <div className="w-full h-full bg-gray-100 overflow-hidden rounded-md relative flex items-center justify-center">
                             {formData.foto ? (
                                <img src={formData.foto} className="w-full h-full object-cover" alt="Gato" />
                             ) : (
                               <div className="w-full h-full flex items-center justify-center text-emerald-800/30">
-                                <span className="text-5xl font-bold font-oswald opacity-50">
+                                <span className="text-4xl font-bold font-oswald opacity-50">
                                   {formData.nome ? formData.nome.charAt(0).toUpperCase() : '?'}
                                 </span>
                               </div>
@@ -347,9 +432,9 @@ const App = () => {
                       </div>
                       
                       {/* Assinatura Corrigida */}
-                      <div className="text-center w-full mt-1">
-                         <div className="mx-auto w-[80%] h-[1px] bg-emerald-900 relative mb-[2px]"></div>
-                         <div className="text-[0.4rem] font-bold text-emerald-800 uppercase tracking-tight leading-none">Assinatura da Patinha</div>
+                      <div className="text-center w-full mt-0.5 px-1">
+                         <div className="mx-auto w-[84%] h-[1.5px] bg-emerald-900/80 relative mb-1"></div>
+                         <div className="text-[0.4rem] font-bold text-emerald-800 uppercase tracking-[0.06em] leading-none">Assinatura da Patinha</div>
                          {/* Patinha Decorativa */}
                          <div className="absolute -top-[2.2rem] left-1/2 -translate-x-1/2 opacity-70 pointer-events-none">
                             <PawPrint size={14} className="text-emerald-900 rotate-[-10deg]" />
@@ -358,14 +443,14 @@ const App = () => {
                     </div>
 
                     {/* Coluna Direita: Dados */}
-                    <div className="flex-1 min-w-0 flex flex-col justify-center h-full pt-2">
-                      <div className="cat-name-title text-4xl font-bold uppercase text-emerald-900 mb-0 font-oswald tracking-tight truncate pb-0 whitespace-nowrap leading-none">
+                    <div className="flex-1 min-w-0 flex flex-col justify-center h-full py-1.5">
+                      <div className="cat-name-title text-[1.62rem] font-bold uppercase text-emerald-900 mb-1 font-oswald tracking-tight pb-[7px] whitespace-nowrap leading-[1.2]">
                         {formData.nome || "NOME DO GATO"}
                       </div>
                       
-                      <div className="w-full h-0.5 bg-emerald-500 mb-3 mt-1 opacity-50"></div>
+                      <div className="w-full h-0.5 bg-emerald-500 mb-2 mt-0.5 opacity-50"></div>
 
-                      <div className="grid grid-cols-2 gap-x-2 gap-y-2 text-[0.6rem] uppercase">
+                      <div className="grid grid-cols-2 gap-x-2.5 gap-y-1.5 text-[0.58rem] uppercase">
                          <div>
                            <span className={cardLabelClass}>Espécie</span>
                            <span className={cardValueClass}>Felis Catus</span>
@@ -412,13 +497,13 @@ const App = () => {
                 </div>
 
                 {/* Footer RG */}
-                <div className="h-[12%] shrink-0 bg-emerald-900 flex items-center justify-between px-6 z-10 border-t-2 border-yellow-400">
-                    <div className="text-white font-mono text-xs tracking-widest flex gap-2 font-bold">
-                      <span className="text-emerald-300">RG:</span>
-                      {formData.rg || "CATLUNA001"}
+                <div className={cardFooterClass}>
+                    <div className={cardFooterRgClass}>
+                      <span className="card-footer-text text-emerald-300">RG:</span>
+                      <span className="card-footer-text">{formData.rg || "CATLUNA001"}</span>
                     </div>
-                    <div className="text-emerald-400/80 text-[0.5rem] uppercase tracking-wide font-bold">
-                      Válido em todo território felino
+                    <div className={cardFooterValidityClass}>
+                      <span className="card-footer-text">Válido em todo território felino</span>
                     </div>
                 </div>
               </div>
@@ -445,23 +530,22 @@ const App = () => {
             >
               {/* Header Verso Listrado */}
               <div 
-                className="h-[18%] shrink-0 w-full flex items-center justify-center relative z-10"
+                className="card-stripe-header h-[18%] shrink-0 w-full flex items-center justify-center relative z-10"
                 style={headerStripeStyle}
               >
-                <div className="bg-emerald-900/95 px-5 py-1.5 rounded-full text-white text-[0.65rem] font-bold uppercase tracking-[0.1em] shadow-lg border border-emerald-400/50 flex items-center gap-2">
-                  Histórico de Vacinação & Cuidados
+                <div className={headerPillClass}>
+                  <span className="header-pill-text">Histórico de Vacinação & Cuidados</span>
                 </div>
               </div>
 
-              <div className="flex-1 p-5 relative flex flex-col justify-between overflow-hidden">
-                
+              <div className="flex-1 p-4 relative flex flex-col overflow-hidden min-h-0">
                 {/* Lista de Vacinas Ajustada */}
                 <div className="flex-1 flex flex-col overflow-hidden min-h-0">
                   <h4 className="flex items-center gap-2 text-[0.6rem] font-bold text-emerald-800 uppercase mb-2 border-b-2 border-emerald-200 pb-1 shrink-0 tracking-wide">
                     <Syringe size={10} className="text-emerald-600" />
                     Registro de Imunização ({vacinas.length})
                   </h4>
-                  
+
                   <div className="overflow-y-auto pr-1">
                     <div className="grid grid-cols-2 gap-x-3 gap-y-2">
                       {vacinas.slice(0, 8).map((vacina, i) => (
@@ -474,55 +558,25 @@ const App = () => {
                   </div>
                 </div>
 
-                {/* Footer do Verso Reconstruído (Estilo Oficial) */}
-                <div className="mt-2 shrink-0 pt-2 border-t-2 border-emerald-200 flex flex-col gap-2">
-                   
-                   <div className="flex items-center gap-3">
-                      {/* QR Code */}
-                      <div className="bg-white p-0.5 border border-gray-300 w-12 h-12 shrink-0">
-                         {formData.instagram ? (
-                           <img 
-                             src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://instagram.com/${formData.instagram.replace('@', '')}&color=000000&bgcolor=ffffff`} 
-                             alt="QR Code" 
-                             className="w-full h-full object-contain"
-                           />
-                         ) : (
-                           <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 text-[0.4rem] text-gray-400">QR</div>
-                         )}
-                      </div>
-
-                      {/* Info Texto */}
-                      <div className="flex-1 text-[0.4rem] leading-tight text-gray-500 text-justify">
-                         <p className="mb-1">
-                           Este documento é de porte obrigatório para o recebimento de petiscos e carinhos. 
-                           O portador está autorizado a miar em horários inapropriados.
-                         </p>
-                         <p className="font-bold text-emerald-800">EMISSÃO: {new Date().toLocaleDateString()}</p>
-                      </div>
-
-                      {/* Selo */}
-                      <div className="w-10 h-10 border-2 border-emerald-600 rounded-full flex items-center justify-center opacity-70 mix-blend-multiply rotate-[-12deg]">
-                         <div className="text-[0.3rem] font-black text-emerald-800 uppercase text-center leading-[0.5rem]">
-                            Aprovado<br/>pelo<br/>Miado
-                         </div>
-                      </div>
-                   </div>
-
-                   {/* Barcode Footer Area */}
-                   <div className="w-full h-6 bg-white border border-gray-300 flex items-center justify-between px-2 relative overflow-hidden">
-                      {/* Fake Barcode Lines */}
-                      <div className="absolute inset-0 flex items-center justify-center gap-[1px] opacity-80">
-                         {[...Array(60)].map((_, i) => (
-                           <div key={i} className="bg-black w-[1px]" style={{ height: `${Math.random() * 60 + 20}%`}}></div>
-                         ))}
-                      </div>
-                      <span className="relative z-10 bg-white px-1 text-[0.5rem] font-mono tracking-widest font-bold text-gray-800">
-                         {formData.rg ? formData.rg.toUpperCase() : "CAT-0000"}
-                      </span>
-                   </div>
-
+                <div className="mt-2 shrink-0 pt-2 border-t border-emerald-200/80">
+                  <div className="flex items-center justify-between text-[0.48rem] text-emerald-900 font-bold uppercase tracking-wide mb-1">
+                    <span>Tutor: {formData.servo || 'Humano Responsável'}</span>
+                    <span>Emissão: {new Date().toLocaleDateString()}</span>
+                  </div>
+                  <p className="text-[0.44rem] text-emerald-800/80 leading-tight">
+                    Documento válido para controle de vacinação, identificação e recebimento oficial de cafunés.
+                  </p>
                 </div>
+              </div>
 
+              <div className={cardFooterClass}>
+                  <div className={cardFooterRgClass}>
+                    <span className="card-footer-text text-emerald-300">RG:</span>
+                    <span className="card-footer-text">{formData.rg || "CATLUNA001"}</span>
+                  </div>
+                  <div className={cardFooterValidityClass}>
+                    <span className="card-footer-text">Válido em todo território felino</span>
+                  </div>
               </div>
             </div>
           </div>
