@@ -88,20 +88,31 @@ Divirta-se criando RGs para seus gatinhos! 🐾
 
 ---
 
-## Deploy no Azure App Service (Windows)
+---
 
-Para evitar página em branco no App Service, use build de produção + servidor Node com fallback de SPA:
+## Deploy no Azure App Service (Windows) via VS Code
 
-1. Faça o build:
-```bash
-npm run build
-```
+Quando o deploy é feito direto pelo VS Code (Zip Deploy), o problema mais comum da “página carregar sem renderizar” é: **o build do Vite não rodou no servidor**.
 
-2. Configure o comando de inicialização no Azure para:
+Para funcionar de forma consistente:
+
+1. Configure o **Startup Command** do App Service para:
 ```bash
 npm start
 ```
 
-3. Garanta que a variável `PORT` seja usada (já suportado em `server.js`).
+2. No App Service, adicione/garanta estes **Application Settings**:
+- `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
+- `WEBSITE_NODE_DEFAULT_VERSION=~20` (ou versão Node compatível com seu projeto)
 
-Isso resolve cenários em que o app carrega a URL, mas os assets/rotas não são resolvidos corretamente no IIS/App Service.
+3. Faça o deploy novamente pelo VS Code.
+
+4. Confira nos logs do deployment se houve:
+- `npm install`
+- `npm run build`
+
+> Este projeto já está preparado para isso com:
+> - `postinstall` executando `npm run build`
+> - `start` executando `node server.js`
+> - fallback SPA no `server.js` para rotas do React.
+
