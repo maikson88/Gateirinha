@@ -84,3 +84,24 @@ O terminal vai mostrar um link (geralmente `http://localhost:5173/`). Clique nel
 ---
 
 Divirta-se criando RGs para seus gatinhos! 🐾
+
+
+---
+
+## Deploy no Azure App Service (Windows)
+
+Para evitar página em branco no App Service, use build de produção + servidor Node com fallback de SPA:
+
+1. Faça o build:
+```bash
+npm run build
+```
+
+2. Configure o comando de inicialização no Azure para:
+```bash
+npm start
+```
+
+3. Garanta que a variável `PORT` seja usada (já suportado em `server.js`).
+
+Isso resolve cenários em que o app carrega a URL, mas os assets/rotas não são resolvidos corretamente no IIS/App Service.
