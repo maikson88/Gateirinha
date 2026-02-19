@@ -145,7 +145,7 @@ const App = () => {
                 node.style.lineHeight = '1';
                 node.style.marginTop = '0';
                 node.style.marginBottom = '0';
-                node.style.transform = 'none';
+                node.style.transform = 'translateY(-1.5px)';
             });
 
             const footerTexts = clonedDoc.querySelectorAll('.card-footer-rg, .card-footer-validity');
