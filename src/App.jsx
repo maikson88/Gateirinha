@@ -108,10 +108,20 @@ const App = () => {
             const stripedHeaders = clonedDoc.querySelectorAll('.card-stripe-header');
             stripedHeaders.forEach((header) => {
                 header.style.backgroundColor = '#047857';
-                header.style.backgroundImage = `url("${headerPattern}")`;
-                header.style.backgroundSize = 'cover';
+                header.style.backgroundImage = 'radial-gradient(circle at 15% 20%, rgba(255,255,255,0.16), transparent 38%), radial-gradient(circle at 80% 18%, rgba(255,255,255,0.12), transparent 35%), linear-gradient(120deg, #065f46 0%, #047857 52%, #0f766e 100%)';
+                header.style.backgroundSize = 'auto, auto, 100% 100%';
                 header.style.backgroundRepeat = 'no-repeat';
-                header.style.backgroundPosition = 'center';
+                header.style.backgroundPosition = 'left top, right top, center';
+            });
+
+            const headerPills = clonedDoc.querySelectorAll('.header-pill');
+            headerPills.forEach((pill) => {
+                pill.style.display = 'flex';
+                pill.style.alignItems = 'center';
+                pill.style.justifyContent = 'center';
+                pill.style.lineHeight = '1';
+                pill.style.paddingTop = '0';
+                pill.style.paddingBottom = '0';
             });
         }
       });
@@ -127,15 +137,13 @@ const App = () => {
   };
 
   const pawPattern = `data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2310b981' fill-opacity='0.08' fill-rule='evenodd' transform='rotate(-45, 30, 30)'%3E%3Cpath d='M10,10 C12,10 13,12 13,14 C13,16 12,18 10,18 C8,18 7,16 7,14 C7,12 8,10 10,10 Z M20,6 C22,6 23,8 23,10 C23,12 22,14 20,14 C18,14 17,12 17,10 C17,8 18,6 20,6 Z M30,10 C32,10 33,12 33,14 C33,16 32,18 30,18 C28,18 27,16 27,14 C27,12 28,10 30,10 Z M20,20 C24,20 26,23 26,26 C26,29 24,32 20,32 C16,32 14,29 14,26 C14,23 16,20 20,20 Z' transform='translate(10, 10)'/%3E%3C/g%3E%3C/svg%3E`;
-  const headerPattern = `data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 120' preserveAspectRatio='none'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='0'><stop offset='0%' stop-color='#065f46'/><stop offset='50%' stop-color='#047857'/><stop offset='100%' stop-color='#0f766e'/></linearGradient></defs><rect width='600' height='120' fill='url(#g)'/><path d='M0 90 C100 70, 200 110, 300 90 C400 70, 500 110, 600 90 L600 120 L0 120 Z' fill='rgba(4,120,87,0.45)'/><path d='M0 24 C100 6, 200 40, 300 22 C400 4, 500 38, 600 20' stroke='rgba(255,255,255,0.15)' stroke-width='4' fill='none'/></svg>`)}`;
-
-  // Header com textura suave via SVG para evitar artefatos no preview e no PNG
+  // Header com gradientes suaves para evitar artefatos no preview e no PNG
   const headerStripeStyle = {
     backgroundColor: '#047857',
-    backgroundImage: `url("${headerPattern}")`,
-    backgroundSize: 'cover',
+    backgroundImage: 'radial-gradient(circle at 15% 20%, rgba(255,255,255,0.16), transparent 38%), radial-gradient(circle at 80% 18%, rgba(255,255,255,0.12), transparent 35%), linear-gradient(120deg, #065f46 0%, #047857 52%, #0f766e 100%)',
+    backgroundSize: 'auto, auto, 100% 100%',
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
+    backgroundPosition: 'left top, right top, center',
     borderBottom: '2px solid #fbbf24'
   };
 
@@ -322,7 +330,7 @@ const App = () => {
               >
                  {/* Container do Texto Centralizado Verticalmente */}
                  <div className="flex items-center justify-center h-full w-full">
-                   <div className="h-7 bg-emerald-900/95 px-5 rounded-full text-white text-[0.62rem] font-bold uppercase tracking-[0.12em] shadow-lg border border-emerald-400/50 flex items-center gap-2 leading-none">
+                   <div className="header-pill h-7 bg-emerald-900/95 px-5 rounded-full text-white text-[0.62rem] font-bold uppercase tracking-[0.12em] shadow-lg border border-emerald-400/50 flex items-center gap-2 leading-none">
                       <span className="font-condensed inline-flex items-center gap-1 leading-none">
                         <span className="text-yellow-400 text-[0.8rem] leading-none">★</span>
                         <span className="leading-none">República Federativa dos Gatos</span>
@@ -459,7 +467,7 @@ const App = () => {
                 className="card-stripe-header h-[18%] shrink-0 w-full flex items-center justify-center relative z-10"
                 style={headerStripeStyle}
               >
-                <div className="h-7 bg-emerald-900/95 px-5 rounded-full text-white text-[0.63rem] font-bold uppercase tracking-[0.1em] shadow-lg border border-emerald-400/50 flex items-center justify-center gap-2 leading-none">
+                <div className="header-pill h-7 bg-emerald-900/95 px-5 rounded-full text-white text-[0.63rem] font-bold uppercase tracking-[0.1em] shadow-lg border border-emerald-400/50 flex items-center justify-center gap-2 leading-none">
                   Histórico de Vacinação & Cuidados
                 </div>
               </div>
@@ -486,7 +494,7 @@ const App = () => {
                 </div>
 
                 {/* Footer do Verso Reconstruído (Estilo Oficial) */}
-                <div className="mt-2 shrink-0 pt-2 border-t-2 border-emerald-200 bg-white/55 rounded-md px-2 pb-2 flex flex-col gap-2">
+                <div className="mt-2 shrink-0 pt-2 border-t-2 border-emerald-200 bg-white/80 rounded-md px-2 pb-2 flex flex-col gap-2">
                    
                    <div className="flex items-center gap-3">
                       {/* QR Code */}
@@ -520,7 +528,7 @@ const App = () => {
                    </div>
 
                    {/* Barcode Footer Area */}
-                   <div className="w-full h-6 bg-white border border-gray-300 flex items-center justify-between px-2 relative overflow-hidden">
+                   <div className="w-full h-7 bg-white border border-gray-300 rounded-sm flex items-center justify-between px-2 relative overflow-hidden shadow-sm">
                       {/* Fake Barcode Lines */}
                       <div className="absolute inset-0 flex items-center justify-center gap-[1px] opacity-80">
                          {[...Array(60)].map((_, i) => (
