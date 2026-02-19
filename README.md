@@ -88,31 +88,38 @@ Divirta-se criando RGs para seus gatinhos! 🐾
 
 ---
 
----
-
 ## Deploy no Azure App Service (Windows) via VS Code
 
-Quando o deploy é feito direto pelo VS Code (Zip Deploy), o problema mais comum da “página carregar sem renderizar” é: **o build do Vite não rodou no servidor**.
+Sim — em App Service Windows, o `web.config` pode ser necessário dependendo de como o site está configurado.
 
-Para funcionar de forma consistente:
+### Quando **não** precisa de `web.config`
+Se você configurar o **Startup Command** para `npm start`, o App Service sobe o Node diretamente e o `server.js` já resolve as rotas SPA.
 
-1. Configure o **Startup Command** do App Service para:
+### Quando **é recomendado** usar `web.config`
+Se o deploy via VS Code cair no pipeline/IIS padrão (sem startup command aplicado corretamente), o `web.config` garante que o IIS encaminhe tudo para o Node (`server.js`).
+
+Este repositório agora já inclui `web.config` para esse cenário Windows.
+
+### Checklist para funcionar de forma consistente
+1. Startup Command:
 ```bash
 npm start
 ```
 
-2. No App Service, adicione/garanta estes **Application Settings**:
+2. Application Settings:
 - `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
-- `WEBSITE_NODE_DEFAULT_VERSION=~20` (ou versão Node compatível com seu projeto)
+- `WEBSITE_NODE_DEFAULT_VERSION=~20` (ou versão compatível)
 
-3. Faça o deploy novamente pelo VS Code.
+3. Redeploy pelo VS Code.
 
-4. Confira nos logs do deployment se houve:
+4. Verifique no Log Stream/Deployment logs se apareceram:
 - `npm install`
 - `npm run build`
+- inicialização do `node server.js`
 
-> Este projeto já está preparado para isso com:
+> Este projeto está preparado com:
 > - `postinstall` executando `npm run build`
 > - `start` executando `node server.js`
-> - fallback SPA no `server.js` para rotas do React.
+> - fallback SPA no `server.js`
+> - `web.config` para roteamento no IIS/Windows App Service.
 
