@@ -122,6 +122,15 @@ const App = () => {
                 pill.style.lineHeight = '1';
                 pill.style.paddingTop = '0';
                 pill.style.paddingBottom = '0';
+                pill.style.transform = 'translateY(-1px)';
+            });
+
+            const footerTexts = clonedDoc.querySelectorAll('.card-footer-rg, .card-footer-validity');
+            footerTexts.forEach((text) => {
+                text.style.lineHeight = '1';
+                text.style.display = 'flex';
+                text.style.alignItems = 'center';
+                text.style.transform = 'translateY(-1px)';
             });
         }
       });
@@ -150,6 +159,10 @@ const App = () => {
   const inputFieldClass = "w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition text-sm";
   const labelTextClass = "block text-xs font-bold text-gray-500 uppercase mb-1";
   const btnDownloadClass = "bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2 px-4 rounded-full shadow-md transition flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed";
+  const headerPillClass = "header-pill h-8 bg-emerald-900/95 px-5 rounded-full text-white text-[0.63rem] font-bold uppercase tracking-[0.1em] shadow-lg border border-emerald-400/50 flex items-center justify-center gap-2 leading-none -translate-y-px";
+  const cardFooterClass = "h-[12%] shrink-0 bg-emerald-900 flex items-center justify-between px-6 z-10 border-t-2 border-yellow-400";
+  const cardFooterRgClass = "card-footer-rg text-white font-mono text-xs tracking-widest flex items-center gap-2 font-bold leading-none";
+  const cardFooterValidityClass = "card-footer-validity text-emerald-400/80 text-[0.5rem] uppercase tracking-wide font-bold leading-none flex items-center";
   
   const cardLabelClass = "data-label block font-bold text-emerald-700 text-[0.45rem] mb-[1px] leading-none uppercase tracking-wide";
   const cardValueClass = "data-value font-bold block whitespace-nowrap text-[0.6rem] leading-none text-gray-800 uppercase";
@@ -330,7 +343,7 @@ const App = () => {
               >
                  {/* Container do Texto Centralizado Verticalmente */}
                  <div className="flex items-center justify-center h-full w-full">
-                   <div className="header-pill h-8 bg-emerald-900/95 px-5 rounded-full text-white text-[0.62rem] font-bold uppercase tracking-[0.12em] shadow-lg border border-emerald-400/50 flex items-center justify-center gap-2 leading-none">
+                   <div className={headerPillClass}>
                       <span className="font-condensed inline-flex items-center gap-1 leading-none">
                         <span className="text-yellow-400 text-[0.8rem] leading-none">★</span>
                         <span className="leading-none">República Federativa dos Gatos</span>
@@ -431,12 +444,12 @@ const App = () => {
                 </div>
 
                 {/* Footer RG */}
-                <div className="h-[12%] shrink-0 bg-emerald-900 flex items-center justify-between px-6 z-10 border-t-2 border-yellow-400">
-                    <div className="text-white font-mono text-xs tracking-widest flex gap-2 font-bold">
+                <div className={cardFooterClass}>
+                    <div className={cardFooterRgClass}>
                       <span className="text-emerald-300">RG:</span>
                       {formData.rg || "CATLUNA001"}
                     </div>
-                    <div className="text-emerald-400/80 text-[0.5rem] uppercase tracking-wide font-bold">
+                    <div className={cardFooterValidityClass}>
                       Válido em todo território felino
                     </div>
                 </div>
@@ -467,7 +480,7 @@ const App = () => {
                 className="card-stripe-header h-[18%] shrink-0 w-full flex items-center justify-center relative z-10"
                 style={headerStripeStyle}
               >
-                <div className="header-pill h-8 bg-emerald-900/95 px-5 rounded-full text-white text-[0.63rem] font-bold uppercase tracking-[0.1em] shadow-lg border border-emerald-400/50 flex items-center justify-center gap-2 leading-none">
+                <div className={headerPillClass}>
                   Histórico de Vacinação & Cuidados
                 </div>
               </div>
@@ -541,12 +554,12 @@ const App = () => {
 
                 </div>
 
-                <div className="h-[12%] shrink-0 bg-emerald-900 flex items-center justify-between px-6 z-10 border-t-2 border-yellow-400">
-                    <div className="text-white font-mono text-xs tracking-widest flex gap-2 font-bold">
+                <div className={cardFooterClass}>
+                    <div className={cardFooterRgClass}>
                       <span className="text-emerald-300">RG:</span>
                       {formData.rg || "CATLUNA001"}
                     </div>
-                    <div className="text-emerald-400/80 text-[0.5rem] uppercase tracking-wide font-bold">
+                    <div className={cardFooterValidityClass}>
                       Válido em todo território felino
                     </div>
                 </div>
