@@ -122,6 +122,7 @@ const App = () => {
                 pill.style.lineHeight = '1';
                 pill.style.paddingTop = '0';
                 pill.style.paddingBottom = '0';
+                pill.style.transform = 'translateY(-1px)';
             });
         }
       });
@@ -330,7 +331,7 @@ const App = () => {
               >
                  {/* Container do Texto Centralizado Verticalmente */}
                  <div className="flex items-center justify-center h-full w-full">
-                   <div className="header-pill h-7 bg-emerald-900/95 px-5 rounded-full text-white text-[0.62rem] font-bold uppercase tracking-[0.12em] shadow-lg border border-emerald-400/50 flex items-center gap-2 leading-none">
+                   <div className="header-pill h-8 -translate-y-[1px] bg-emerald-900/95 px-5 rounded-full text-white text-[0.62rem] font-bold uppercase tracking-[0.12em] shadow-lg border border-emerald-400/50 flex items-center gap-2 leading-none">
                       <span className="font-condensed inline-flex items-center gap-1 leading-none">
                         <span className="text-yellow-400 text-[0.8rem] leading-none">★</span>
                         <span className="leading-none">República Federativa dos Gatos</span>
@@ -467,7 +468,7 @@ const App = () => {
                 className="card-stripe-header h-[18%] shrink-0 w-full flex items-center justify-center relative z-10"
                 style={headerStripeStyle}
               >
-                <div className="header-pill h-7 bg-emerald-900/95 px-5 rounded-full text-white text-[0.63rem] font-bold uppercase tracking-[0.1em] shadow-lg border border-emerald-400/50 flex items-center justify-center gap-2 leading-none">
+                <div className="header-pill h-8 -translate-y-[1px] bg-emerald-900/95 px-5 rounded-full text-white text-[0.63rem] font-bold uppercase tracking-[0.1em] shadow-lg border border-emerald-400/50 flex items-center justify-center gap-2 leading-none">
                   Histórico de Vacinação & Cuidados
                 </div>
               </div>
@@ -529,7 +530,6 @@ const App = () => {
 
                    {/* Barcode Footer Area */}
                    <div className="w-full h-7 bg-white border border-gray-300 rounded-sm flex items-center justify-between px-2 relative overflow-hidden shadow-sm">
-                      {/* Fake Barcode Lines */}
                       <div className="absolute inset-0 flex items-center justify-center gap-[1px] opacity-80">
                          {[...Array(60)].map((_, i) => (
                            <div key={i} className="bg-black w-[1px]" style={{ height: `${Math.random() * 60 + 20}%`}}></div>
@@ -540,6 +540,16 @@ const App = () => {
                       </span>
                    </div>
 
+                </div>
+
+                <div className="mt-2 h-8 shrink-0 bg-emerald-900 flex items-center justify-between px-4 z-10 border-t-2 border-yellow-400 rounded-sm">
+                    <div className="text-white font-mono text-[0.58rem] tracking-widest flex gap-2 font-bold">
+                      <span className="text-emerald-300">RG:</span>
+                      {formData.rg || "CATLUNA001"}
+                    </div>
+                    <div className="text-emerald-300/90 text-[0.42rem] uppercase tracking-wide font-bold">
+                      Válido em todo território felino
+                    </div>
                 </div>
 
               </div>
