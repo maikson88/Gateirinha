@@ -84,3 +84,42 @@ O terminal vai mostrar um link (geralmente `http://localhost:5173/`). Clique nel
 ---
 
 Divirta-se criando RGs para seus gatinhos! 🐾
+
+
+---
+
+---
+
+## Deploy no Azure App Service (Windows) via VS Code
+
+Sim — e para deixar o deploy **rápido**, o ideal é publicar somente o build pronto (`dist`).
+
+### Estratégia recomendada (deploy rápido)
+1. Gere o build localmente:
+```bash
+npm run build
+```
+
+2. No App Service (Configuration > General settings), use Startup Command:
+```bash
+node server.js
+```
+
+3. Em Application Settings, deixe:
+- `SCM_DO_BUILD_DURING_DEPLOYMENT=false` (evita build no servidor e acelera deploy)
+- `WEBSITE_NODE_DEFAULT_VERSION=~20`
+
+4. Faça deploy pelo VS Code com `.webappignore` (já incluído neste repo) para enviar só o necessário:
+- `dist/**`
+- `server.js`
+- `web.config`
+- `package.json` / `package-lock.json`
+
+### Sobre `web.config`
+- Em Windows App Service, ele continua útil como fallback para IIS encaminhar requisições ao Node (`server.js`).
+- Mesmo com Startup Command, manter `web.config` ajuda a evitar variações de ambiente no deploy via VS Code.
+
+### Resultado esperado
+- Deploy bem mais rápido (sem `npm install`/`vite build` no servidor).
+- App servindo apenas artefatos de produção de `dist`.
+

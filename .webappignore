@@ -1,0 +1,24 @@
+# Deploy rápido para Azure App Service via VS Code
+# Mantém apenas o necessário para servir o build pronto
+
+node_modules/
+src/
+.git/
+.github/
+.vscode/
+
+*.log
+npm-debug.log*
+
+index.html
+vite.config.js
+tailwind.config.js
+postcss.config.js
+
+# Mantém runtime
+!dist/
+!dist/**
+!server.js
+!web.config
+!package.json
+!package-lock.json
