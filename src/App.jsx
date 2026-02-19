@@ -105,6 +105,16 @@ const App = () => {
                 el.style.fontVariant = 'normal';
             });
 
+            const exportCards = clonedDoc.querySelectorAll('.export-card');
+            exportCards.forEach((card) => {
+                card.style.border = 'none';
+                card.style.boxShadow = 'none';
+                card.style.outline = 'none';
+            });
+
+            clonedDoc.documentElement.style.backgroundColor = 'transparent';
+            clonedDoc.body.style.backgroundColor = 'transparent';
+
             const stripedHeaders = clonedDoc.querySelectorAll('.card-stripe-header');
             stripedHeaders.forEach((header) => {
                 header.style.backgroundColor = '#047857';
@@ -386,7 +396,7 @@ const App = () => {
             
             <div 
               ref={frontCardRef} 
-              className="aspect-[1.586/1] w-full bg-emerald-50 rounded-xl shadow-2xl overflow-hidden relative border border-gray-200 select-none text-[#0f3d30] flex flex-col"
+              className="export-card aspect-[1.586/1] w-full bg-emerald-50 rounded-xl shadow-2xl overflow-hidden relative border border-gray-200 select-none text-[#0f3d30] flex flex-col"
               style={{ backgroundImage: `url("${pawPattern}")`, backgroundColor: '#f0fdf4' }}
             >
               {/* Header Listrado Corrigido */}
@@ -523,7 +533,7 @@ const App = () => {
 
             <div 
               ref={backCardRef} 
-              className="aspect-[1.586/1] w-full bg-emerald-50 rounded-xl shadow-2xl overflow-hidden relative border border-gray-200 select-none flex flex-col"
+              className="export-card aspect-[1.586/1] w-full bg-emerald-50 rounded-xl shadow-2xl overflow-hidden relative border border-gray-200 select-none flex flex-col"
               style={{ backgroundImage: `url("${pawPattern}")`, backgroundColor: '#f0fdf4' }}
             >
               {/* Header Verso Listrado */}
