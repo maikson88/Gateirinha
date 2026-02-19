@@ -88,38 +88,38 @@ Divirta-se criando RGs para seus gatinhos! 🐾
 
 ---
 
+---
+
 ## Deploy no Azure App Service (Windows) via VS Code
 
-Sim — em App Service Windows, o `web.config` pode ser necessário dependendo de como o site está configurado.
+Sim — e para deixar o deploy **rápido**, o ideal é publicar somente o build pronto (`dist`).
 
-### Quando **não** precisa de `web.config`
-Se você configurar o **Startup Command** para `npm start`, o App Service sobe o Node diretamente e o `server.js` já resolve as rotas SPA.
-
-### Quando **é recomendado** usar `web.config`
-Se o deploy via VS Code cair no pipeline/IIS padrão (sem startup command aplicado corretamente), o `web.config` garante que o IIS encaminhe tudo para o Node (`server.js`).
-
-Este repositório agora já inclui `web.config` para esse cenário Windows.
-
-### Checklist para funcionar de forma consistente
-1. Startup Command:
+### Estratégia recomendada (deploy rápido)
+1. Gere o build localmente:
 ```bash
-npm start
+npm run build
 ```
 
-2. Application Settings:
-- `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
-- `WEBSITE_NODE_DEFAULT_VERSION=~20` (ou versão compatível)
+2. No App Service (Configuration > General settings), use Startup Command:
+```bash
+node server.js
+```
 
-3. Redeploy pelo VS Code.
+3. Em Application Settings, deixe:
+- `SCM_DO_BUILD_DURING_DEPLOYMENT=false` (evita build no servidor e acelera deploy)
+- `WEBSITE_NODE_DEFAULT_VERSION=~20`
 
-4. Verifique no Log Stream/Deployment logs se apareceram:
-- `npm install`
-- `npm run build`
-- inicialização do `node server.js`
+4. Faça deploy pelo VS Code com `.webappignore` (já incluído neste repo) para enviar só o necessário:
+- `dist/**`
+- `server.js`
+- `web.config`
+- `package.json` / `package-lock.json`
 
-> Este projeto está preparado com:
-> - `postinstall` executando `npm run build`
-> - `start` executando `node server.js`
-> - fallback SPA no `server.js`
-> - `web.config` para roteamento no IIS/Windows App Service.
+### Sobre `web.config`
+- Em Windows App Service, ele continua útil como fallback para IIS encaminhar requisições ao Node (`server.js`).
+- Mesmo com Startup Command, manter `web.config` ajuda a evitar variações de ambiente no deploy via VS Code.
+
+### Resultado esperado
+- Deploy bem mais rápido (sem `npm install`/`vite build` no servidor).
+- App servindo apenas artefatos de produção de `dist`.
 
