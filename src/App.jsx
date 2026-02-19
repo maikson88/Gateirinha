@@ -102,6 +102,14 @@ const App = () => {
             fontElements.forEach(el => {
                 el.style.fontVariant = 'normal';
             });
+
+            const stripedHeaders = clonedDoc.querySelectorAll('.card-stripe-header');
+            stripedHeaders.forEach((header) => {
+                header.style.backgroundColor = '#047857';
+                header.style.backgroundImage = 'repeating-linear-gradient(135deg, #047857 0px, #047857 12px, #065f46 12px, #065f46 24px)';
+                header.style.backgroundSize = '34px 34px';
+                header.style.backgroundRepeat = 'repeat';
+            });
         }
       });
       
@@ -117,15 +125,12 @@ const App = () => {
 
   const pawPattern = `data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2310b981' fill-opacity='0.08' fill-rule='evenodd' transform='rotate(-45, 30, 30)'%3E%3Cpath d='M10,10 C12,10 13,12 13,14 C13,16 12,18 10,18 C8,18 7,16 7,14 C7,12 8,10 10,10 Z M20,6 C22,6 23,8 23,10 C23,12 22,14 20,14 C18,14 17,12 17,10 C17,8 18,6 20,6 Z M30,10 C32,10 33,12 33,14 C33,16 32,18 30,18 C28,18 27,16 27,14 C27,12 28,10 30,10 Z M20,20 C24,20 26,23 26,26 C26,29 24,32 20,32 C16,32 14,29 14,26 C14,23 16,20 20,20 Z' transform='translate(10, 10)'/%3E%3C/g%3E%3C/svg%3E`;
 
-  // Estilo do Header Listrado (CSS Puro para melhor renderização)
+  // Estilo do Header Listrado (propriedades explícitas para garantir exportação em PNG)
   const headerStripeStyle = {
-    background: `repeating-linear-gradient(
-      135deg,
-      #047857,
-      #047857 10px,
-      #065f46 10px,
-      #065f46 20px
-    )`,
+    backgroundColor: '#047857',
+    backgroundImage: 'repeating-linear-gradient(135deg, #047857 0px, #047857 12px, #065f46 12px, #065f46 24px)',
+    backgroundSize: '34px 34px',
+    backgroundRepeat: 'repeat',
     borderBottom: '2px solid #fbbf24' // Borda dourada para acabamento
   };
 
@@ -307,7 +312,7 @@ const App = () => {
             >
               {/* Header Listrado Corrigido */}
               <div 
-                className="h-[18%] shrink-0 w-full flex items-center justify-center relative z-10"
+                className="card-stripe-header h-[18%] shrink-0 w-full flex items-center justify-center relative z-10"
                 style={headerStripeStyle}
               >
                  {/* Container do Texto Centralizado Verticalmente */}
@@ -445,7 +450,7 @@ const App = () => {
             >
               {/* Header Verso Listrado */}
               <div 
-                className="h-[18%] shrink-0 w-full flex items-center justify-center relative z-10"
+                className="card-stripe-header h-[18%] shrink-0 w-full flex items-center justify-center relative z-10"
                 style={headerStripeStyle}
               >
                 <div className="bg-emerald-900/95 px-5 py-1.5 rounded-full text-white text-[0.65rem] font-bold uppercase tracking-[0.1em] shadow-lg border border-emerald-400/50 flex items-center gap-2">
