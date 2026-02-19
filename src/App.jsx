@@ -386,8 +386,8 @@ const App = () => {
             
             <div 
               ref={frontCardRef} 
-              className="aspect-[1.586/1] w-full bg-white rounded-xl shadow-2xl overflow-hidden relative border border-gray-200 select-none text-[#0f3d30] flex flex-col"
-              style={{ backgroundImage: `url("${pawPattern}")`, backgroundColor: '#fff' }}
+              className="aspect-[1.586/1] w-full bg-emerald-50 rounded-xl shadow-2xl overflow-hidden relative border border-gray-200 select-none text-[#0f3d30] flex flex-col"
+              style={{ backgroundImage: `url("${pawPattern}")`, backgroundColor: '#f0fdf4' }}
             >
               {/* Header Listrado Corrigido */}
               <div 
