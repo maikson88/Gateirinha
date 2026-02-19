@@ -136,8 +136,8 @@ const App = () => {
                 });
             });
 
-            const explicitCenteredTexts = clonedDoc.querySelectorAll('.header-pill-text, .card-footer-text');
-            explicitCenteredTexts.forEach((node) => {
+            const headerCenteredTexts = clonedDoc.querySelectorAll('.header-pill-text');
+            headerCenteredTexts.forEach((node) => {
                 node.style.display = 'inline-flex';
                 node.style.alignItems = 'center';
                 node.style.justifyContent = 'center';
@@ -146,6 +146,20 @@ const App = () => {
                 node.style.marginTop = '0';
                 node.style.marginBottom = '0';
                 node.style.transform = 'translateY(-5px)';
+            });
+
+            const footerCenteredTexts = clonedDoc.querySelectorAll('.card-footer-text');
+            footerCenteredTexts.forEach((node) => {
+                node.style.display = 'inline-flex';
+                node.style.alignItems = 'center';
+                node.style.justifyContent = 'center';
+                node.style.height = '100%';
+                node.style.lineHeight = '1';
+                node.style.marginTop = '0';
+                node.style.marginBottom = '0';
+                node.style.position = 'relative';
+                node.style.top = '-5px';
+                node.style.transform = 'none';
             });
 
             const footerTexts = clonedDoc.querySelectorAll('.card-footer-rg, .card-footer-validity');
