@@ -558,8 +558,8 @@ const App = () => {
                     <div className="grid grid-cols-2 gap-x-3 gap-y-2">
                       {vacinas.slice(0, 8).map((vacina, i) => (
                         <div key={i} className="flex justify-between items-center text-[0.5rem] bg-white/90 px-2 py-1.5 rounded border border-emerald-100 shadow-sm">
-                          <span className="vacina-text font-bold text-gray-800 truncate max-w-[65%]" title={vacina.nome}>{vacina.nome || "Vacina"}</span>
-                          <span className="vacina-text font-mono text-emerald-700 font-bold tracking-tight">{vacina.data || "--/--"}</span>
+                          <span className="vacina-text font-bold text-gray-800 truncate max-w-[65%] -translate-y-[5px]" title={vacina.nome}>{vacina.nome || "Vacina"}</span>
+                          <span className="vacina-text font-mono text-emerald-700 font-bold tracking-tight -translate-y-[5px]">{vacina.data || "--/--"}</span>
                         </div>
                       ))}
                     </div>
