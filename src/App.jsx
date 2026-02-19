@@ -122,7 +122,18 @@ const App = () => {
                 pill.style.lineHeight = '1';
                 pill.style.paddingTop = '0';
                 pill.style.paddingBottom = '0';
+                pill.style.minHeight = '32px';
                 pill.style.transform = 'none';
+
+                const pillChildren = pill.querySelectorAll('*');
+                pillChildren.forEach((child) => {
+                    child.style.display = 'inline-flex';
+                    child.style.alignItems = 'center';
+                    child.style.lineHeight = '1';
+                    child.style.marginTop = '0';
+                    child.style.marginBottom = '0';
+                    child.style.transform = 'none';
+                });
             });
 
             const footerTexts = clonedDoc.querySelectorAll('.card-footer-rg, .card-footer-validity');
@@ -133,8 +144,20 @@ const App = () => {
                 text.style.justifyContent = 'center';
                 text.style.paddingTop = '0';
                 text.style.paddingBottom = '0';
+                text.style.marginTop = '0';
+                text.style.marginBottom = '0';
                 text.style.height = '100%';
                 text.style.transform = 'none';
+
+                const footerChildren = text.querySelectorAll('*');
+                footerChildren.forEach((child) => {
+                    child.style.display = 'inline-flex';
+                    child.style.alignItems = 'center';
+                    child.style.lineHeight = '1';
+                    child.style.marginTop = '0';
+                    child.style.marginBottom = '0';
+                    child.style.transform = 'none';
+                });
             });
         }
       });
