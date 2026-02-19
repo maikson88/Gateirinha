@@ -328,14 +328,14 @@ const App = () => {
                   <input 
                     type="text" 
                     placeholder="Nome da Vacina" 
-                    className={`${inputFieldClass} flex-1`}
+                    className={`${inputFieldClass} flex-1 text-base`}
                     value={vacina.nome} 
                     onChange={(e) => updateVacina(index, 'nome', e.target.value)}
                   />
                   <input 
                     type="text" 
                     placeholder="Data" 
-                    className={`${inputFieldClass} w-24`}
+                    className={`${inputFieldClass} w-28 flex-shrink-0`}
                     value={vacina.data} 
                     onChange={(e) => updateVacina(index, 'data', e.target.value)}
                   />
@@ -397,8 +397,7 @@ const App = () => {
                  {/* Container do Texto Centralizado Verticalmente */}
                  <div className="flex items-center justify-center h-full w-full">
                    <div className={headerPillClass}>
-                      <span className="font-condensed inline-flex items-center gap-1 leading-none">
-                        <span className="header-pill-text text-yellow-400 text-[0.8rem] leading-none">★</span>
+                      <span className="font-condensed inline-flex items-center leading-none">
                         <span className="header-pill-text leading-none">República Federativa dos Gatos</span>
                       </span>
                       <span className="h-3 w-[1px] bg-emerald-500/50"></span>
@@ -414,7 +413,7 @@ const App = () => {
                 <div className="flex-1 flex items-center justify-center px-6 py-2 relative z-10">
                   <div className="w-full flex gap-5 items-center justify-center">
                     
-                    {/* Coluna Esquerda: Foto + Assinatura */}
+                    {/* Coluna Esquerda: Foto */}
                     <div className="flex flex-col items-center gap-3 shrink-0 w-[24%]">
                       {/* Foto Box */}
                       <div className="w-full aspect-[3/4] bg-white border-2 border-emerald-800 rounded-lg p-1 shadow-md relative group">
@@ -431,15 +430,6 @@ const App = () => {
                          </div>
                       </div>
                       
-                      {/* Assinatura Corrigida */}
-                      <div className="text-center w-full mt-0.5 px-1">
-                         <div className="mx-auto w-[84%] h-[1.5px] bg-emerald-900/80 relative mb-1"></div>
-                         <div className="text-[0.4rem] font-bold text-emerald-800 uppercase tracking-[0.06em] leading-none">Assinatura da Patinha</div>
-                         {/* Patinha Decorativa */}
-                         <div className="absolute -top-[2.2rem] left-1/2 -translate-x-1/2 opacity-70 pointer-events-none">
-                            <PawPrint size={14} className="text-emerald-900 rotate-[-10deg]" />
-                         </div>
-                      </div>
                     </div>
 
                     {/* Coluna Direita: Dados */}
@@ -559,6 +549,13 @@ const App = () => {
                 </div>
 
                 <div className="mt-2 shrink-0 pt-2 border-t border-emerald-200/80">
+                  <div className="text-center w-full mt-1.5 mb-2 px-1">
+                    <div className="mx-auto w-[52%] h-[1.5px] bg-emerald-900/80 mb-1"></div>
+                    <div className="flex items-center justify-center gap-1 text-[0.42rem] font-bold text-emerald-800 uppercase tracking-[0.06em] leading-none">
+                      <PawPrint size={10} className="text-emerald-900" />
+                      <span>Assinatura da Patinha</span>
+                    </div>
+                  </div>
                   <div className="flex items-center justify-between text-[0.48rem] text-emerald-900 font-bold uppercase tracking-wide mb-1">
                     <span>Tutor: {formData.servo || 'Humano Responsável'}</span>
                     <span>Emissão: {new Date().toLocaleDateString()}</span>
