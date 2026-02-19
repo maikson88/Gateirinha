@@ -430,7 +430,7 @@ const App = () => {
                          </div>
                       </div>
 
-                      <div className="text-center w-full mt-0.5 px-1">
+                      <div className="text-center w-full mt-[5px] px-1">
                         <div className="mx-auto w-[84%] h-[1.5px] bg-emerald-900/80 mb-1"></div>
                         <div className="flex items-center justify-center gap-1 text-[0.4rem] font-bold text-emerald-800 uppercase tracking-[0.06em] leading-none">
                           <PawPrint size={11} className="text-emerald-900" />
