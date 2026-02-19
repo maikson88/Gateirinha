@@ -94,9 +94,10 @@ const App = () => {
             // Ajuste específico para o título (Nome do Gato)
             const titleEl = clonedDoc.querySelector('.cat-name-title');
             if(titleEl) {
-               titleEl.style.lineHeight = '1.05';
-               titleEl.style.marginBottom = '3px';
-               titleEl.style.paddingBottom = '2px';
+               titleEl.style.lineHeight = '1.12';
+               titleEl.style.marginBottom = '4px';
+               titleEl.style.paddingBottom = '4px';
+               titleEl.style.overflow = 'visible';
             }
             
             const fontElements = clonedDoc.querySelectorAll('.font-oswald, .font-condensed');
@@ -108,7 +109,7 @@ const App = () => {
             stripedHeaders.forEach((header) => {
                 header.style.backgroundColor = '#047857';
                 header.style.backgroundImage = `url("${stripePattern}")`;
-                header.style.backgroundSize = '48px 48px';
+                header.style.backgroundSize = '32px 32px';
                 header.style.backgroundRepeat = 'repeat';
             });
         }
@@ -125,13 +126,13 @@ const App = () => {
   };
 
   const pawPattern = `data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2310b981' fill-opacity='0.08' fill-rule='evenodd' transform='rotate(-45, 30, 30)'%3E%3Cpath d='M10,10 C12,10 13,12 13,14 C13,16 12,18 10,18 C8,18 7,16 7,14 C7,12 8,10 10,10 Z M20,6 C22,6 23,8 23,10 C23,12 22,14 20,14 C18,14 17,12 17,10 C17,8 18,6 20,6 Z M30,10 C32,10 33,12 33,14 C33,16 32,18 30,18 C28,18 27,16 27,14 C27,12 28,10 30,10 Z M20,20 C24,20 26,23 26,26 C26,29 24,32 20,32 C16,32 14,29 14,26 C14,23 16,20 20,20 Z' transform='translate(10, 10)'/%3E%3C/g%3E%3C/svg%3E`;
-  const stripePattern = `data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'><rect width='48' height='48' fill='#047857'/><path d='M-12 48 L24 12 M0 60 L36 24 M12 60 L48 24 M24 60 L60 24 M36 60 L72 24' stroke='#065f46' stroke-width='10' stroke-linecap='square'/></svg>`)}`;
+  const stripePattern = `data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><rect width='32' height='32' fill='#047857'/><path fill='#065f46' d='M-8 32 L8 16 L16 24 L0 40 Z M8 32 L24 16 L32 24 L16 40 Z M24 32 L40 16 L48 24 L32 40 Z'/></svg>`)}`;
 
   // Header com listras via SVG para garantir que o html2canvas renderize no PNG
   const headerStripeStyle = {
     backgroundColor: '#047857',
     backgroundImage: `url("${stripePattern}")`,
-    backgroundSize: '48px 48px',
+    backgroundSize: '32px 32px',
     backgroundRepeat: 'repeat',
     borderBottom: '2px solid #fbbf24'
   };
@@ -367,7 +368,7 @@ const App = () => {
 
                     {/* Coluna Direita: Dados */}
                     <div className="flex-1 min-w-0 flex flex-col justify-center h-full py-1">
-                      <div className="cat-name-title text-[1.9rem] font-bold uppercase text-emerald-900 mb-0.5 font-oswald tracking-tight truncate pb-[2px] whitespace-nowrap leading-[1.05]">
+                      <div className="cat-name-title text-[1.75rem] font-bold uppercase text-emerald-900 mb-1 font-oswald tracking-tight pb-[4px] whitespace-nowrap leading-[1.12]">
                         {formData.nome || "NOME DO GATO"}
                       </div>
                       
