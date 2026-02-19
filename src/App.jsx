@@ -122,7 +122,7 @@ const App = () => {
                 pill.style.lineHeight = '1';
                 pill.style.paddingTop = '0';
                 pill.style.paddingBottom = '0';
-                pill.style.transform = 'translateY(-1px)';
+                pill.style.transform = 'none';
             });
 
             const footerTexts = clonedDoc.querySelectorAll('.card-footer-rg, .card-footer-validity');
@@ -130,7 +130,8 @@ const App = () => {
                 text.style.lineHeight = '1';
                 text.style.display = 'flex';
                 text.style.alignItems = 'center';
-                text.style.transform = 'translateY(-1px)';
+                text.style.justifyContent = 'center';
+                text.style.transform = 'none';
             });
         }
       });
@@ -159,7 +160,7 @@ const App = () => {
   const inputFieldClass = "w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition text-sm";
   const labelTextClass = "block text-xs font-bold text-gray-500 uppercase mb-1";
   const btnDownloadClass = "bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2 px-4 rounded-full shadow-md transition flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed";
-  const headerPillClass = "header-pill h-8 bg-emerald-900/95 px-5 rounded-full text-white text-[0.63rem] font-bold uppercase tracking-[0.1em] shadow-lg border border-emerald-400/50 flex items-center justify-center gap-2 leading-none -translate-y-px";
+  const headerPillClass = "header-pill h-8 bg-emerald-900/95 px-5 rounded-full text-white text-[0.63rem] font-bold uppercase tracking-[0.1em] shadow-lg border border-emerald-400/50 flex items-center justify-center gap-2 leading-none";
   const cardFooterClass = "h-[12%] shrink-0 bg-emerald-900 flex items-center justify-between px-6 z-10 border-t-2 border-yellow-400";
   const cardFooterRgClass = "card-footer-rg text-white font-mono text-xs tracking-widest flex items-center gap-2 font-bold leading-none";
   const cardFooterValidityClass = "card-footer-validity text-emerald-400/80 text-[0.5rem] uppercase tracking-wide font-bold leading-none flex items-center";
@@ -506,52 +507,14 @@ const App = () => {
                   </div>
                 </div>
 
-                {/* Footer do Verso Reconstruído (Estilo Oficial) */}
-                <div className="mt-2 shrink-0 pt-2 border-t-2 border-emerald-200 bg-white/80 rounded-md px-2 pb-2 flex flex-col gap-2">
-                   
-                   <div className="flex items-center gap-3">
-                      {/* QR Code */}
-                      <div className="bg-white p-0.5 border border-gray-300 w-12 h-12 shrink-0">
-                         {formData.instagram ? (
-                           <img 
-                             src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://instagram.com/${formData.instagram.replace('@', '')}&color=000000&bgcolor=ffffff`} 
-                             alt="QR Code" 
-                             className="w-full h-full object-contain"
-                           />
-                         ) : (
-                           <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 text-[0.4rem] text-gray-400">QR</div>
-                         )}
-                      </div>
-
-                      {/* Info Texto */}
-                      <div className="flex-1 text-[0.4rem] leading-tight text-gray-500 text-justify">
-                         <p className="mb-1">
-                           Este documento é de porte obrigatório para o recebimento de petiscos e carinhos. 
-                           O portador está autorizado a miar em horários inapropriados.
-                         </p>
-                         <p className="font-bold text-emerald-800">EMISSÃO: {new Date().toLocaleDateString()}</p>
-                      </div>
-
-                      {/* Selo */}
-                      <div className="w-10 h-10 border-2 border-emerald-600 rounded-full flex items-center justify-center opacity-70 mix-blend-multiply rotate-[-12deg]">
-                         <div className="text-[0.3rem] font-black text-emerald-800 uppercase text-center leading-[0.5rem]">
-                            Aprovado<br/>pelo<br/>Miado
-                         </div>
-                      </div>
-                   </div>
-
-                   {/* Barcode Footer Area */}
-                   <div className="w-full h-7 bg-white border border-gray-300 rounded-sm flex items-center justify-between px-2 relative overflow-hidden shadow-sm">
-                      <div className="absolute inset-0 flex items-center justify-center gap-[1px] opacity-80">
-                         {[...Array(60)].map((_, i) => (
-                           <div key={i} className="bg-black w-[1px]" style={{ height: `${Math.random() * 60 + 20}%`}}></div>
-                         ))}
-                      </div>
-                      <span className="relative z-10 bg-white px-1 text-[0.5rem] font-mono tracking-widest font-bold text-gray-800">
-                         {formData.rg ? formData.rg.toUpperCase() : "CAT-0000"}
-                      </span>
-                   </div>
-
+                <div className="mt-2 shrink-0 pt-2 border-t border-emerald-200/80">
+                  <div className="flex items-center justify-between text-[0.48rem] text-emerald-900 font-bold uppercase tracking-wide mb-1">
+                    <span>Tutor: {formData.servo || 'Humano Responsável'}</span>
+                    <span>Emissão: {new Date().toLocaleDateString()}</span>
+                  </div>
+                  <p className="text-[0.44rem] text-emerald-800/80 leading-tight">
+                    Documento válido para controle de vacinação, identificação e recebimento oficial de cafunés.
+                  </p>
                 </div>
 
                 <div className={cardFooterClass}>
