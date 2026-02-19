@@ -136,6 +136,18 @@ const App = () => {
                 });
             });
 
+            const explicitCenteredTexts = clonedDoc.querySelectorAll('.header-pill-text, .card-footer-text');
+            explicitCenteredTexts.forEach((node) => {
+                node.style.display = 'inline-flex';
+                node.style.alignItems = 'center';
+                node.style.justifyContent = 'center';
+                node.style.height = '100%';
+                node.style.lineHeight = '1';
+                node.style.marginTop = '0';
+                node.style.marginBottom = '0';
+                node.style.transform = 'none';
+            });
+
             const footerTexts = clonedDoc.querySelectorAll('.card-footer-rg, .card-footer-validity');
             footerTexts.forEach((text) => {
                 text.style.lineHeight = '1';
@@ -473,11 +485,11 @@ const App = () => {
                 {/* Footer RG */}
                 <div className={cardFooterClass}>
                     <div className={cardFooterRgClass}>
-                      <span className="text-emerald-300">RG:</span>
-                      {formData.rg || "CATLUNA001"}
+                      <span className="card-footer-text text-emerald-300">RG:</span>
+                      <span className="card-footer-text">{formData.rg || "CATLUNA001"}</span>
                     </div>
                     <div className={cardFooterValidityClass}>
-                      Válido em todo território felino
+                      <span className="card-footer-text">Válido em todo território felino</span>
                     </div>
                 </div>
               </div>
@@ -508,7 +520,7 @@ const App = () => {
                 style={headerStripeStyle}
               >
                 <div className={headerPillClass}>
-                  Histórico de Vacinação & Cuidados
+                  <span className="header-pill-text">Histórico de Vacinação & Cuidados</span>
                 </div>
               </div>
 
@@ -545,11 +557,11 @@ const App = () => {
 
               <div className={cardFooterClass}>
                   <div className={cardFooterRgClass}>
-                    <span className="text-emerald-300">RG:</span>
-                    {formData.rg || "CATLUNA001"}
+                    <span className="card-footer-text text-emerald-300">RG:</span>
+                    <span className="card-footer-text">{formData.rg || "CATLUNA001"}</span>
                   </div>
                   <div className={cardFooterValidityClass}>
-                    Válido em todo território felino
+                    <span className="card-footer-text">Válido em todo território felino</span>
                   </div>
               </div>
             </div>
