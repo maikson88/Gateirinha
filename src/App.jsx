@@ -324,18 +324,18 @@ const App = () => {
                 <Syringe size={18} /> Vacinas
               </h3>
               {vacinas.map((vacina, index) => (
-                <div key={index} className="flex gap-2 mb-2">
+                <div key={index} className="flex gap-2 mb-2 items-center">
                   <input 
                     type="text" 
                     placeholder="Nome da Vacina" 
-                    className={`${inputFieldClass} flex-1 text-base`}
+                    className={`${inputFieldClass} flex-[2] min-w-0 text-sm sm:text-base`}
                     value={vacina.nome} 
                     onChange={(e) => updateVacina(index, 'nome', e.target.value)}
                   />
                   <input 
                     type="text" 
                     placeholder="Data" 
-                    className={`${inputFieldClass} w-28 flex-shrink-0`}
+                    className={`${inputFieldClass} w-20 sm:w-24 flex-shrink-0 text-xs sm:text-sm`}
                     value={vacina.data} 
                     onChange={(e) => updateVacina(index, 'data', e.target.value)}
                   />
@@ -429,7 +429,15 @@ const App = () => {
                             )}
                          </div>
                       </div>
-                      
+
+                      <div className="text-center w-full mt-0.5 px-1">
+                        <div className="mx-auto w-[84%] h-[1.5px] bg-emerald-900/80 mb-1"></div>
+                        <div className="flex items-center justify-center gap-1 text-[0.4rem] font-bold text-emerald-800 uppercase tracking-[0.06em] leading-none">
+                          <PawPrint size={11} className="text-emerald-900" />
+                          <span>Assinatura da Patinha</span>
+                        </div>
+                      </div>
+
                     </div>
 
                     {/* Coluna Direita: Dados */}
@@ -549,13 +557,6 @@ const App = () => {
                 </div>
 
                 <div className="mt-2 shrink-0 pt-2 border-t border-emerald-200/80">
-                  <div className="text-center w-full mt-1.5 mb-2 px-1">
-                    <div className="mx-auto w-[52%] h-[1.5px] bg-emerald-900/80 mb-1"></div>
-                    <div className="flex items-center justify-center gap-1 text-[0.42rem] font-bold text-emerald-800 uppercase tracking-[0.06em] leading-none">
-                      <PawPrint size={10} className="text-emerald-900" />
-                      <span>Assinatura da Patinha</span>
-                    </div>
-                  </div>
                   <div className="flex items-center justify-between text-[0.48rem] text-emerald-900 font-bold uppercase tracking-wide mb-1">
                     <span>Tutor: {formData.servo || 'Humano Responsável'}</span>
                     <span>Emissão: {new Date().toLocaleDateString()}</span>
