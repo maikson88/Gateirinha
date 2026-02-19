@@ -145,7 +145,7 @@ const App = () => {
                 node.style.lineHeight = '1';
                 node.style.marginTop = '0';
                 node.style.marginBottom = '0';
-                node.style.transform = 'translateY(-1.5px)';
+                node.style.transform = 'translateY(-2px)';
             });
 
             const footerTexts = clonedDoc.querySelectorAll('.card-footer-rg, .card-footer-validity');
@@ -384,11 +384,11 @@ const App = () => {
                  <div className="flex items-center justify-center h-full w-full">
                    <div className={headerPillClass}>
                       <span className="font-condensed inline-flex items-center gap-1 leading-none">
-                        <span className="text-yellow-400 text-[0.8rem] leading-none">★</span>
-                        <span className="leading-none">República Federativa dos Gatos</span>
+                        <span className="header-pill-text text-yellow-400 text-[0.8rem] leading-none">★</span>
+                        <span className="header-pill-text leading-none">República Federativa dos Gatos</span>
                       </span>
                       <span className="h-3 w-[1px] bg-emerald-500/50"></span>
-                      <span className="font-condensed text-emerald-200 leading-none">Registro Gatuno</span>
+                      <span className="header-pill-text font-condensed text-emerald-200 leading-none">Registro Gatuno</span>
                    </div>
                  </div>
               </div>
